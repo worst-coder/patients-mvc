@@ -2,6 +2,7 @@ package ma.emsi.patientsmvc;
 
 import ma.emsi.patientsmvc.entities.Patient;
 import ma.emsi.patientsmvc.repositories.PatientRepository;
+import ma.emsi.patientsmvc.sec.service.SecurityService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -32,6 +33,22 @@ public class PatientsMvcApplication {
             patientRepository.findAll().forEach(p->{
                 System.out.println(p.getNom());
             });
+        };
+    }
+    @Bean
+    CommandLineRunner saveUsers(SecurityService securityService){
+        return args -> {
+            securityService.saveNewUser("adam", "User1", "User1");
+            securityService.saveNewUser("omar", "User1", "User1");
+            securityService.saveNewUser("amine", "User1", "User1");
+
+            securityService.saveNewRole("USER", "");
+            securityService.saveNewRole("ADMIN","");
+
+            securityService.addRoleToUser("adam", "USER");
+            securityService.addRoleToUser("adam","ADMIN");
+            securityService.addRoleToUser("omar","USER");
+            securityService.addRoleToUser("amine","USER");
         };
     }
 
