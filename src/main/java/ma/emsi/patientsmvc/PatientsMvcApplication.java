@@ -35,20 +35,20 @@ public class PatientsMvcApplication {
             });
         };
     }
-    @Bean
+    //@Bean
     CommandLineRunner saveUsers(SecurityService securityService){
         return args -> {
-            securityService.saveNewUser("adam", "User1", "User1");
-            securityService.saveNewUser("omar", "User1", "User1");
-            securityService.saveNewUser("amine", "User1", "User1");
+            securityService.saveNewUser("hicham", "User1", "User1");
+            securityService.saveNewUser("nasser", "User1", "User1");
+            securityService.saveNewUser("fajr", "User1", "User1");
 
             securityService.saveNewRole("USER", "");
             securityService.saveNewRole("ADMIN","");
 
-            securityService.addRoleToUser("adam", "USER");
-            securityService.addRoleToUser("adam","ADMIN");
-            securityService.addRoleToUser("omar","USER");
-            securityService.addRoleToUser("amine","USER");
+            securityService.addRoleToUser("hicham", "USER");
+            securityService.addRoleToUser("hicham","ADMIN");
+            securityService.addRoleToUser("nasser","USER");
+            securityService.addRoleToUser("fajr","USER");
         };
     }
 
